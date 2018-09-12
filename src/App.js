@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
+import PersonPicker from './components/PersonPicker'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <p className="App-intro">
           Choose a character
         </p>
+        <PersonPicker />
       </div>
     );
   }
