@@ -1,11 +1,13 @@
-const baseURL = "/swapi.co/api/"
+const baseURL = "https://swapi.co/api/"
 
 export const getPerson = (person) => {
-  return fetch(`${baseURL}/people/person`, {
+  return fetch(`${baseURL}people/${person}`, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'accept': 'appliction/json'
-    }
-  }).then(console.log)
+  }).then(res => res.json())
+}
+
+export const getFilm = (film) => {
+  return fetch(film, {
+    method: 'GET',
+  }).then(res => res.json())
 }
