@@ -20,7 +20,7 @@ class App extends Component {
 
   handleChange = person => {
     console.log('handleChange', person);
-    this.setState({ person, loading: true }, () => {
+    this.setState({ person, loading: true, films: [] }, () => {
       getPerson(this.state.person)
       .then(data => {
         this.getFilms(data.films)
@@ -87,7 +87,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log('state.person', this.state.person);
+    console.log('state', this.state);
     // console.log('films', films);
     return (
       <div className="App">
@@ -101,7 +101,7 @@ class App extends Component {
         {this.state.person.name && !this.state.loading &&
           <h3>Films that {this.state.person.name} appears in:</h3>
         }
-        {this.state.films && !this.state.loading &&
+        {this.state.films && !this.state.loading && this.state.data.films && this.state.data.films.length ===this.state.films.length &&
           this.renderFilms()
         }
       </div>
