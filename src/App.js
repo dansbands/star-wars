@@ -3,22 +3,20 @@ import './css/App.css';
 import PersonPicker from './components/PersonPicker'
 import { getPerson, getFilm } from './utils/index.js'
 
-
-import characters from './utils/characters.json'
-
 class App extends Component {
   state = {
-    person: 1,
+    person: {
+      name: "Luke Skywalker",
+      url: "https://swapi.co/api/people/1/"
+    },
     data: [],
     films: [],
-
-    characters: []
   }
 
   componentWillMount() {
-    getPerson(this.state.person)
+    getPerson(this.state.person.url)
     .then(data => {
-      this.setState({ data, characters })
+      this.setState({ data })
       this.getFilms(data.films)
     })
   }

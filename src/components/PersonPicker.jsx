@@ -27,7 +27,7 @@ class PersonPicker extends React.Component {
  }
 
  handleChange = e => {
-   console.log('Changing Dropdown', e.target.value);
+   // console.log('Changing Dropdown', e.target.value);
    let selectedCharacter = characters.characters.find(ch => ch.name === e.target.value)
    this.setState({ selectedCharacter })
  }

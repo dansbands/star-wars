@@ -1,7 +1,7 @@
 const baseURL = "https://swapi.co/api/"
 
 export const getPerson = (person) => {
-  return fetch(`${baseURL}people/${person}`, {
+  return fetch(person, {
     method: 'GET',
   }).then(res => res.json())
 }
