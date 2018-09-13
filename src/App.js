@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   getFilms = (films) => {
-    console.log('getFilms', films);
+    // console.log('getFilms', films);
     let newFilms = []
     films.map(f => {
       getFilm(f)
@@ -28,8 +28,25 @@ class App extends Component {
     })
   }
 
+  renderFilms = () => {
+    let newFilms = this.state.films.map(f => {
+      return (
+        <div>
+          <h3>{f.title} - {f.release_date}</h3>
+        </div>
+      )
+    })
+    return newFilms
+  }
+
+  formatDate = (date) => {
+
+  }
+
   render() {
+    let films = this.renderFilms()
     console.log('state.films', this.state.films);
+    console.log('films', films);
     return (
       <div className="App">
         <header className="App-header">
@@ -39,6 +56,8 @@ class App extends Component {
           Choose a character
         </p>
         <PersonPicker />
+        <h3>Films that {this.state.data.name} appears in:</h3>
+        {this.state.films ? this.renderFilms() : 'no films'}
       </div>
     );
   }
