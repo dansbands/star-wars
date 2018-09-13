@@ -5,6 +5,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 class PersonPicker extends React.Component {
   state = {
     characters: [],
+    selectedCharacter: '',
     dropdownOpen: false
   }
 
@@ -16,26 +17,28 @@ class PersonPicker extends React.Component {
    this.setState(prevState => ({
      dropdownOpen: !prevState.dropdownOpen
    }));
- }
+  }
 
  renderDropdownItems = () => {
    let newChar = this.state.characters.map(ch => {
-     return <DropdownItem value={ch.url}>{ch.name}</DropdownItem>
+     return <option value={ch.name}>{ch.name}</option>
    })
    return newChar
  }
 
+ handleChange = e => {
+   console.log('Changing Dropdown', e.target.id);
+   let selectedCharacter = characters.characters.find(ch => ch.name === e.target.id)
+   this.setState({ selectedCharacter })
+ }
+
   render () {
-    console.log('PersonPicker characters', this.state.characters);
+    console.log('PersonPicker', this.state);
     return (
-      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-          Choose a Character
-        </DropdownToggle>
-        <DropdownMenu>
-          {this.renderDropdownItems()}
-        </DropdownMenu>
-      </Dropdown>
+      <select
+        className="form-control" onChange={this.handleChange}>
+        {this.renderDropdownItems()}
+      </select>
     )
   }
 }
