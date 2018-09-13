@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import PersonPicker from './components/PersonPicker'
-import { getPerson, getFilm } from './utils/index.js'
+import { getPerson, getFilm, findPerson } from './utils/index.js'
 
 class App extends Component {
   state = {
@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    getPerson(this.state.person.url)
+    getPerson(this.state.person)
     .then(data => {
       this.setState({ data })
       this.getFilms(data.films)
@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   getFilms = (films) => {
-    // console.log('getFilms', films);
     let newFilms = []
     films.map(f => {
       getFilm(f)
@@ -67,12 +66,13 @@ class App extends Component {
   handleChange = person => {
     console.log('handleChange', person);
     this.setState({ person }, () => {
-      getPerson(this.state.person.url)
+      findPerson(this.state.person)
       .then(data => {
+        console.log('findPerson', data);
         this.setState({ data })
         this.getFilms(data.films)
       })
-    }) 
+    })
   }
 
   render() {
