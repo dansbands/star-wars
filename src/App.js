@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/App.css';
 import PersonPicker from './components/PersonPicker'
 import { getPerson, getFilm, findPerson } from './utils/index.js'
+import moment from 'moment'
 
 class App extends Component {
   state = {
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   formatDate = (date) => {
-    const years = {
+    const months = {
       '01': 'January',
       '02': 'February',
       '03': 'March',
@@ -54,13 +55,21 @@ class App extends Component {
       '09': 'September',
       '10': 'October',
       '11': 'November',
-      '12': 'December'}
+      '12': 'December'
+    }
+    let day = this.getDayOfWeek(date)
     date = date.split('-')
     let year = date.shift()
     date.push(year)
-    date[0] = years[date[0]]
+    date[0] = months[date[0]]
     date = date.join(' ')
+    date = `${day}, ${date}`
     return date
+  }
+
+  getDayOfWeek = (date) => {
+    let dayOfWeek = new Date(date).getDay();
+    return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
   }
 
   handleChange = person => {
