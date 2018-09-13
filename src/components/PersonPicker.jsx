@@ -1,6 +1,5 @@
 import React from 'react'
 import characters from '../utils/characters.json'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class PersonPicker extends React.Component {
   state = {
@@ -30,6 +29,7 @@ class PersonPicker extends React.Component {
    // console.log('Changing Dropdown', e.target.value);
    let selectedCharacter = characters.characters.find(ch => ch.name === e.target.value)
    this.setState({ selectedCharacter })
+   this.props.handleChange(selectedCharacter)
  }
 
   render () {

@@ -61,14 +61,18 @@ class App extends Component {
     date.push(year)
     date[0] = years[date[0]]
     date = date.join(' ')
-    console.log('new date', date);
     return date
+  }
+
+  handleChange = person => {
+    console.log('handleChange', person);
+    this.setState({ person }, () => getPerson(this.state.person.url))
   }
 
   render() {
     let films = this.renderFilms()
-    console.log('state.characters', this.state.characters);
-    console.log('films', films);
+    console.log('state.person', this.state.person);
+    // console.log('films', films);
     return (
       <div className="App">
         <header className="App-header">
@@ -77,9 +81,9 @@ class App extends Component {
         <p className="App-intro">
           Choose a character
         </p>
-        <PersonPicker />
+        <PersonPicker handleChange={this.handleChange}/>
 
-        <h3>Films that {this.state.data.name} appears in:</h3>
+        <h3>Films that {this.state.person.name} appears in:</h3>
         {this.state.films ? this.renderFilms() : 'no films'}
       </div>
     );
