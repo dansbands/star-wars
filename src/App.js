@@ -12,14 +12,7 @@ class App extends Component {
     },
     data: [],
     films: [],
-  }
-
-  componentWillMount() {
-    // getPerson(this.state.person)
-    // .then(data => {
-    //   this.setState({ data })
-    //   this.getFilms(data.films)
-    // })
+    render: false
   }
 
   getFilms = (films) => {
@@ -39,7 +32,10 @@ class App extends Component {
         </div>
       )
     })
-    return newFilms
+
+    if (newFilms.length === this.state.films.length) {
+      return newFilms
+    }
   }
 
   formatDate = (date) => {
@@ -75,7 +71,7 @@ class App extends Component {
   handleChange = person => {
     console.log('handleChange', person);
     this.setState({ person }, () => {
-      findPerson(this.state.person)
+      getPerson(this.state.person)
       .then(data => {
         console.log('findPerson', data);
         this.setState({ data })
@@ -86,7 +82,7 @@ class App extends Component {
 
   render() {
     let films = this.renderFilms()
-    console.log('state.person', this.state.person);
+    // console.log('state.person', this.state.person);
     // console.log('films', films);
     return (
       <div className="App">
