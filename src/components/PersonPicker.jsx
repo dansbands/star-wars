@@ -33,7 +33,7 @@ class PersonPicker extends React.Component {
  }
 
   render () {
-    console.log('PersonPicker', this.state);
+    // console.log('PersonPicker', this.state);
     return (
       <select
         className="form-control"

@@ -87,7 +87,6 @@ class App extends Component {
   }
 
   render() {
-    let films = this.renderFilms()
     // console.log('state.person', this.state.person);
     // console.log('films', films);
     return (
