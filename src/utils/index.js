@@ -7,7 +7,7 @@ export const getPerson = (person) => {
   }).then(res => res.json())
   .catch((err) => {
     console.log('error', err);
-      return findPerson(person)
+      // return findPerson(person)
    })
 }
 
@@ -17,11 +17,11 @@ export const getFilm = (film) => {
   }).then(res => res.json())
 }
 
-export const findPerson = (person) => {
-  return fetch(`${baseURL}people/?search=${person.name}`, {
-    method: 'GET',
-  })
-  // .then(console.log)
-  .then(res => res.json())
-  .then(data => data.results[0])
-}
+// export const findPerson = (person) => {
+//   return fetch(`${baseURL}people/?search=${person.name}`, {
+//     method: 'GET',
+//   })
+//   // .then(console.log)
+//   .then(res => res.json())
+//   .then(data => data.results[0])
+// }

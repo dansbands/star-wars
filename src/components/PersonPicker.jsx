@@ -20,7 +20,7 @@ class PersonPicker extends React.Component {
 
  renderDropdownItems = () => {
    let newChar = this.state.characters.map(ch => {
-     return <option value={ch.name}>{ch.name}</option>
+     return <option key={ch.url} value={ch.name}>{ch.name}</option>
    })
    return newChar
  }
@@ -37,8 +37,11 @@ class PersonPicker extends React.Component {
     return (
       <select
         className="form-control"
-        onChange={this.handleChange}>
-        <option value="Choose a character" disabled selected>Select your option</option>
+        onChange={this.handleChange}
+        defaultValue="Choose a character"
+        >
+
+        <option value="Choose a character" disabled>Select your option</option>
           {this.renderDropdownItems()}
 
       </select>
