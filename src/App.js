@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import PersonPicker from './components/PersonPicker'
-import { getPerson, getFilm } from './services/index.js'
+import { getPerson, getFilm } from './utils/index.js'
+
+
+import characters from './utils/characters.json'
 
 class App extends Component {
   state = {
     person: 1,
     data: [],
-    films: []
+    films: [],
+
+    characters: []
   }
 
   componentWillMount() {
     getPerson(this.state.person)
     .then(data => {
-      this.setState({ data })
+      this.setState({ data, characters })
       this.getFilms(data.films)
     })
   }
@@ -30,8 +35,6 @@ class App extends Component {
 
   renderFilms = () => {
     let newFilms = this.state.films.map(f => {
-      console.log(this.formatDate(f.release_date));
-
       return (
         <div>
           <h3>{f.title} - {this.formatDate(f.release_date)}</h3>
@@ -42,7 +45,7 @@ class App extends Component {
   }
 
   formatDate = (date) => {
-    let years = {
+    const years = {
       '01': 'January',
       '02': 'February',
       '03': 'March',
@@ -55,7 +58,6 @@ class App extends Component {
       '10': 'October',
       '11': 'November',
       '12': 'December'}
-
     date = date.split('-')
     let year = date.shift()
     date.push(year)
@@ -65,13 +67,9 @@ class App extends Component {
     return date
   }
 
-  convertYear = (year) => {
-
-  }
-
   render() {
     let films = this.renderFilms()
-    console.log('state.films', this.state.films);
+    console.log('state.characters', this.state.characters);
     console.log('films', films);
     return (
       <div className="App">
@@ -82,6 +80,7 @@ class App extends Component {
           Choose a character
         </p>
         <PersonPicker />
+
         <h3>Films that {this.state.data.name} appears in:</h3>
         {this.state.films ? this.renderFilms() : 'no films'}
       </div>
