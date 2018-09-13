@@ -66,7 +66,13 @@ class App extends Component {
 
   handleChange = person => {
     console.log('handleChange', person);
-    this.setState({ person }, () => getPerson(this.state.person.url))
+    this.setState({ person }, () => {
+      getPerson(this.state.person.url)
+      .then(data => {
+        this.setState({ data })
+        this.getFilms(data.films)
+      })
+    }) 
   }
 
   render() {
