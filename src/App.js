@@ -4,6 +4,8 @@ import PersonPicker from './components/PersonPicker'
 import { getPerson, getFilm } from './utils/index.js'
 import moment from 'moment'
 import loader from './img/bb8.gif'
+import logo from './img/logo.jpg'
+import logo2 from './img/logo2.jpg'
 
 class App extends Component {
   state = {
@@ -91,11 +93,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Star Wars</h1>
+          <img src={logo2} alt="Star Wars" width="150px"/>
         </header>
         <PersonPicker handleChange={this.handleChange}/>
         {this.state.loading &&
-          <img src={loader} width="50px" alt="loading" />
+          <img src={loader} width="100px" alt="loading" />
         }
         {this.state.person.name && !this.state.loading &&
           <h3>Films that {this.state.person.name} appears in:</h3>
