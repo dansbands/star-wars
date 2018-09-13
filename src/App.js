@@ -101,8 +101,11 @@ class App extends Component {
         {this.state.person.name && !this.state.loading &&
           <h3>Films that {this.state.person.name} appears in:</h3>
         }
-        {this.state.films && !this.state.loading && this.state.data.films && this.state.data.films.length ===this.state.films.length &&
+        {this.state.films && !this.state.loading && this.state.data.films && this.state.data.films.length === this.state.films.length &&
           this.renderFilms()
+        }
+        {this.state.person.name && !this.state.loading && !this.state.films.length &&
+          'No films available'
         }
       </div>
     );
