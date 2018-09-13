@@ -30,9 +30,11 @@ class App extends Component {
 
   renderFilms = () => {
     let newFilms = this.state.films.map(f => {
+      console.log(this.formatDate(f.release_date));
+
       return (
         <div>
-          <h3>{f.title} - {f.release_date}</h3>
+          <h3>{f.title} - {this.formatDate(f.release_date)}</h3>
         </div>
       )
     })
@@ -40,6 +42,30 @@ class App extends Component {
   }
 
   formatDate = (date) => {
+    let years = {
+      '01': 'January',
+      '02': 'February',
+      '03': 'March',
+      '04': 'April',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July',
+      '08': 'August',
+      '09': 'September',
+      '10': 'October',
+      '11': 'November',
+      '12': 'December'}
+
+    date = date.split('-')
+    let year = date.shift()
+    date.push(year)
+    date[0] = years[date[0]]
+    date = date.join(' ')
+    console.log('new date', date);
+    return date
+  }
+
+  convertYear = (year) => {
 
   }
 
