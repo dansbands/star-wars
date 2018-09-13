@@ -6,19 +6,19 @@ import { getPerson, getFilm, findPerson } from './utils/index.js'
 class App extends Component {
   state = {
     person: {
-      name: "Luke Skywalker",
-      url: "https://swapi.co/api/people/1/"
+      name: "",
+      url: ""
     },
     data: [],
     films: [],
   }
 
   componentWillMount() {
-    getPerson(this.state.person)
-    .then(data => {
-      this.setState({ data })
-      this.getFilms(data.films)
-    })
+    // getPerson(this.state.person)
+    // .then(data => {
+    //   this.setState({ data })
+    //   this.getFilms(data.films)
+    // })
   }
 
   getFilms = (films) => {
@@ -84,12 +84,10 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Star Wars</h1>
         </header>
-        <p className="App-intro">
-          Choose a character
-        </p>
         <PersonPicker handleChange={this.handleChange}/>
-
-        <h3>Films that {this.state.person.name} appears in:</h3>
+        {this.state.person.name &&
+          <h3>Films that {this.state.person.name} appears in:</h3>
+        }
         {this.state.films ? this.renderFilms() : 'no films'}
       </div>
     );

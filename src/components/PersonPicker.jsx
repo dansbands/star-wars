@@ -36,8 +36,11 @@ class PersonPicker extends React.Component {
     console.log('PersonPicker', this.state);
     return (
       <select
-        className="form-control" onChange={this.handleChange}>
-        {this.renderDropdownItems()}
+        className="form-control"
+        onChange={this.handleChange}>
+        <option value="Choose a character" disabled selected>Select your option</option>
+          {this.renderDropdownItems()}
+
       </select>
     )
   }
