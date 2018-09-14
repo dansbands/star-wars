@@ -39,7 +39,7 @@ class FilmCard extends React.Component {
     let rowImage = this.props.row ? "image-row" : "image-card"
     let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let numeral = roman[this.props.film.episode_id - 1]
-    let source = `../../img/posters/${this.props.film.episode_id}.jpg`
+    let source = `https://dansbands.github.io/star-wars/img/posters/${this.props.film.episode_id}.jpg`
     return (
       <div key={this.props.film.title} className={rowClass} onClick={this.props.onClick}>
         {this.props.row ? (
