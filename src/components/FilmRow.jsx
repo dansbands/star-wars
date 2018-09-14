@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Col, Row } from 'reactstrap'
 
 class FilmCard extends React.Component {
   formatDate = (date) => {
@@ -34,36 +33,18 @@ class FilmCard extends React.Component {
   }
 
   render () {
-    let rowClass = this.props.row ? "movie-row" : "movie-card"
-    let rowImage = this.props.row ? "image-row" : "image-card"
     console.log("FilmCard Props", this.props);
     let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let numeral = roman[this.props.film.episode_id - 1]
     let source = `/img/posters/${this.props.film.episode_id}.jpg`
     return (
-      <div key={this.props.film.title} className={rowClass}>
-        {this.props.row ? (
-          <Row className="movie-row-content align-middle">
-            <Col md={2}>
-              <img src={source} alt="poster" className={rowImage}/>
-            </Col>
-            <Col md={5} className="text-left align-middle">
-              <h3>Episode {numeral}: {this.props.film.title}</h3>
-            </Col>
-            <Col md={5} className="text-left align-middle">
-              <h3>Release Date: {this.formatDate(this.props.film.release_date)}</h3>
-            </Col>
-          </Row>
-        ) : (
-          <div>
-            <img src={source} alt="poster" className={rowImage}/>
-            <div className="movie-caption">
-              <h6>Episode {numeral}: </h6>
-              <h4>{this.props.film.title}</h4>
-              <h6>Release Date: {this.formatDate(this.props.film.release_date)}</h6>
-            </div>
-          </div>
-        )}
+      <div key={this.props.film.title} className="movie-card">
+        <img src={source} alt="poster" height="450px" />
+        <div className="movie-caption">
+          <h6>Episode {numeral}: </h6>
+          <h4>{this.props.film.title}</h4>
+          <h6>Release Date: {this.formatDate(this.props.film.release_date)}</h6>
+        </div>
       </div>
     )
   }

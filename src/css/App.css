@@ -48,6 +48,32 @@
   min-width: 400px;
 }
 
+.movie-row {
+  position: relative;
+  width: 100%;
+  /* justify-content: space-around; */
+  border-bottom: 1px solid lightgrey;
+  /* margin: 10px 0; */
+  height: 120px;
+  padding: 10px;
+}
+
+.movie-row-content {
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.image-card {
+  height: 450px;
+}
+
+.image-row {
+  height: 100px;
+  position: absolute;
+  left: 100px;
+}
+
 .movies {
   display: flex;
   justify-content: space-around;
@@ -60,4 +86,8 @@
   border-top: 1px solid lightgrey;
   margin-top: 20px;
   padding-top: 10px;
+}
+
+.movie-caption-row {
+
 }

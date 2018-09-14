@@ -17,7 +17,8 @@ class App extends Component {
     },
     data: [],
     films: [],
-    loading: false
+    loading: false,
+    row: true
   }
 
   handleChange = person => {
@@ -49,7 +50,10 @@ class App extends Component {
     let newFilms =
     this.state.films.length ?
     this.state.films.map(f => {
-      return <FilmCard film= {f} key={f.episode_id}/>
+      return <FilmCard
+        film= {f}
+        row={this.state.row}
+        key={f.episode_id}/>
     }) : "No films listed"
     return newFilms
   }
