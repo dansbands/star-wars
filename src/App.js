@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import PersonPicker from './components/PersonPicker'
+import FilmCard from './components/FilmCard'
 import { getPerson, getFilm } from './utils/index.js'
 import moment from 'moment'
 import loader from './img/bb8.gif'
@@ -48,59 +49,14 @@ class App extends Component {
     let newFilms =
     this.state.films.length ?
     this.state.films.map(f => {
-      let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
-      let numeral = roman[f.episode_id - 1]
-      let source = `/img/posters/${f.episode_id}.jpg`
-      return (
-        <div key={f.title} className="movie-card">
-          <img src={source} alt="poster" height="450px" />
-          <div className="movie-caption">
-            <h6>Episode {numeral}: </h6>
-            <h4>{f.title}</h4>
-            <h6>Release Date: {this.formatDate(f.release_date)}</h6>
-          </div>
-        </div>
-      )
+      return <FilmCard film= {f} key={f.episode_id}/>
     }) : "No films listed"
-
     return newFilms
   }
 
   showLoader = () => {
     this.setState({ loading: true })
     setTimeout(() => this.setState ({loading: false}), 1000)
-  }
-
-//helper methods
-
-  formatDate = (date) => {
-    const months = {
-      '01': 'January',
-      '02': 'February',
-      '03': 'March',
-      '04': 'April',
-      '05': 'May',
-      '06': 'June',
-      '07': 'July',
-      '08': 'August',
-      '09': 'September',
-      '10': 'October',
-      '11': 'November',
-      '12': 'December'
-    }
-    let day = this.getDayOfWeek(date)
-    date = date.split('-')
-    let year = date.shift()
-    date.push(year)
-    date[0] = months[date[0]]
-    date = date.join(' ')
-    date = `${day}, ${date}`
-    return date
-  }
-
-  getDayOfWeek = (date) => {
-    let dayOfWeek = new Date(date).getDay();
-    return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
   }
 
   render() {
