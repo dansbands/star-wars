@@ -36,6 +36,30 @@
   to { transform: rotate(360deg); }
 }
 
+.subheader {
+  display: flex;
+  justify-content: space-around;
+}
+
+.subheader-left {
+  width: 50%;
+}
+
+.subheader-right {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  padding-top: 10px;
+}
+
+.active {
+  fill: navy;
+}
+
+.inactive {
+  fill: grey;
+}
+
 .loader {
   align-self: center;
 }

@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mdi/font": "^2.7.94",
     "bootstrap": "^4.1.3",
+    "mdi-react": "^4.3.0",
     "moment": "^2.22.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",

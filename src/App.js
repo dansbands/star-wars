@@ -3,7 +3,8 @@ import './css/App.css';
 import PersonPicker from './components/PersonPicker'
 import FilmCard from './components/FilmCard'
 import { getPerson, getFilm } from './utils/index.js'
-import moment from 'moment'
+import ViewGridIcon from 'mdi-react/ViewGridIcon';
+import FormatListBulletedIcon from 'mdi-react/FormatListBulletedIcon';
 import loader from './img/bb8.gif'
 import logo from './img/logo.jpg'
 import logo2 from './img/logo2.jpg'
@@ -18,7 +19,7 @@ class App extends Component {
     data: [],
     films: [],
     loading: false,
-    row: true
+    row: false
   }
 
   handleChange = person => {
@@ -63,15 +64,31 @@ class App extends Component {
     setTimeout(() => this.setState ({loading: false}), 1000)
   }
 
+  toggleRow = () => {
+    this.setState({ row: !this.state.row})
+  }
+
   render() {
     console.log('state', this.state);
     // console.log('films', films);
+    let rowClass = this.state.row ? "active" : "inactive"
+    let gridClass = this.state.row ? "inactive" : "active"
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo2} alt="Movie Poster" width="150px"/>
         </header>
-        <PersonPicker handleChange={this.handleChange}/>
+
+        <div className="subheader">
+          <div className="subheader-left">
+            <PersonPicker handleChange={this.handleChange}/>
+          </div>
+          <div className="subheader-right">
+            <ViewGridIcon onClick={this.toggleRow} className={gridClass}/>
+            <FormatListBulletedIcon onClick={this.toggleRow} className={rowClass}/>
+          </div>
+        </div>
+
 
         {this.state.loading &&
           <div className="movies">
