@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-logo {
@@ -31,4 +34,24 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.movie-card {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.3);
+  min-width: 400px;
+}
+
+.movies {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.movie-caption {
+  border-top: 1px solid lightgrey;
+  margin-top: 20px;
+  padding-top: 10px;
 }

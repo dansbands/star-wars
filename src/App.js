@@ -7,6 +7,7 @@ import loader from './img/bb8.gif'
 import logo from './img/logo.jpg'
 import logo2 from './img/logo2.jpg'
 
+
 class App extends Component {
   state = {
     person: {
@@ -43,18 +44,28 @@ class App extends Component {
   }
 
   renderFilms = () => {
+    let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let newFilms =
     this.state.films.length ?
     this.state.films.map(f => {
+      let numeral = roman[f.episode_id - 1]
+      let source = `/img/posters/${f.episode_id}.jpg`
       return (
-        <div>
-          <h3>{f.title} - {this.formatDate(f.release_date)}</h3>
+        <div key={f.title} className="movie-card">
+          <img src={source} alt="poster" height="450px" />
+          <div className="movie-caption">
+            <h6>Episode {numeral}: </h6>
+            <h4>{f.title}</h4>
+            <h6>Release Date: {this.formatDate(f.release_date)}</h6>
+          </div>
         </div>
       )
     }) : "No films listed"
 
     return newFilms
   }
+
+//helper methods
 
   formatDate = (date) => {
     const months = {
@@ -95,18 +106,21 @@ class App extends Component {
           <img src={logo2} alt="Star Wars" width="150px"/>
         </header>
         <PersonPicker handleChange={this.handleChange}/>
+
         {this.state.loading &&
-          <img src={loader} width="100px" alt="loading" />
-        }
+          <img src={loader} width="100px" alt="loading" />}
+
         {this.state.person.name && !this.state.loading &&
-          <h3>Films that {this.state.person.name} appears in:</h3>
-        }
+          <h3>Films that {this.state.person.name} appears in:</h3>}
+
         {this.state.films && !this.state.loading && this.state.data.films && this.state.data.films.length === this.state.films.length &&
-          this.renderFilms()
-        }
+          <div className="movies">
+            {this.renderFilms()}
+          </div>
+          }
+
         {this.state.person.name && !this.state.loading && !this.state.films.length &&
-          'No films available'
-        }
+          'No films available'}
       </div>
     );
   }
