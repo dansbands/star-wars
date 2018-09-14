@@ -56,7 +56,11 @@ class FilmModal extends React.Component {
                 <img src={source} alt="poster" className="image-card"/>
               </Col>
               <Col md={8}>
-                {data.opening_crawl}
+                <h6>Director: {data.director}</h6>
+                <h6>Producer: {data.producer}</h6>
+                <div className="crawl">
+                  {data.opening_crawl}
+                </div>
               </Col>
             </Row>
           </ModalBody>

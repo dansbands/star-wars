@@ -66,6 +66,10 @@
   padding-top: 10px;
 } */
 
+.subheader-caption {
+  margin-top: 20px;
+}
+
 .active {
   fill: white;
 }
@@ -146,4 +150,20 @@
 
 .film-modal {
   width: 80%;
+}
+
+.crawl {
+  margin-top: 20px;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+}
+
+.welcome-inner {
+  margin-top: 15%;
 }

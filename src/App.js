@@ -10,7 +10,6 @@ import loader from './img/bb8.gif'
 import logo from './img/logo.jpg'
 import logo2 from './img/logo2.jpg'
 
-
 class App extends Component {
   state = {
     person: {
@@ -82,7 +81,6 @@ class App extends Component {
 
   render() {
     console.log('state', this.state);
-    // console.log('films', films);
     let rowClass = this.state.row ? "active" : "inactive"
     let gridClass = this.state.row ? "inactive" : "active"
     return (
@@ -105,7 +103,7 @@ class App extends Component {
         }
 
         {this.state.person.name && !this.state.loading &&
-          <h3>Films that {this.state.person.name} appears in:</h3>}
+          <h3 className="subheader-caption">Films that {this.state.person.name} appears in:</h3>}
 
         {this.state.films && !this.state.loading && this.state.data.films && this.state.data.films.length === this.state.films.length &&
           <div className="movies">
@@ -115,6 +113,16 @@ class App extends Component {
 
         {this.state.person.name && !this.state.loading && !this.state.films.length &&
           'No films available'}
+
+        {!this.state.person.name &&
+          <div className="welcome">
+            <div className="welcome-inner">
+              <h1>Welcome!</h1>
+              <h2>Choose a Character</h2>
+              <h2>Using the Menu Above</h2>
+            </div>
+          </div>
+        }
 
         <FilmModal
           modal={this.state.modal}
