@@ -21,11 +21,12 @@ class App extends Component {
 
   handleChange = person => {
     console.log('handleChange', person);
-    this.setState({ person, loading: true, films: [] }, () => {
+    this.showLoader()
+    this.setState({ person, films: [] }, () => {
       getPerson(this.state.person)
       .then(data => {
         this.getFilms(data.films)
-        this.setState({ data, loading: false })
+        this.setState({ data })
       })
     })
   }
@@ -44,10 +45,10 @@ class App extends Component {
   }
 
   renderFilms = () => {
-    let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let newFilms =
     this.state.films.length ?
     this.state.films.map(f => {
+      let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
       let numeral = roman[f.episode_id - 1]
       let source = `/img/posters/${f.episode_id}.jpg`
       return (
@@ -63,6 +64,11 @@ class App extends Component {
     }) : "No films listed"
 
     return newFilms
+  }
+
+  showLoader = () => {
+    this.setState({ loading: true })
+    setTimeout(() => this.setState ({loading: false}), 1000)
   }
 
 //helper methods
@@ -103,12 +109,15 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo2} alt="Star Wars" width="150px"/>
+          <img src={logo2} alt="Movie Poster" width="150px"/>
         </header>
         <PersonPicker handleChange={this.handleChange}/>
 
         {this.state.loading &&
-          <img src={loader} width="100px" alt="loading" />}
+          <div className="movies">
+            <img src={loader} width="100px" alt="loading" className="loader" />
+          </div>
+        }
 
         {this.state.person.name && !this.state.loading &&
           <h3>Films that {this.state.person.name} appears in:</h3>}
