@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   handleChange = person => {
-    console.log('handleChange', person);
     this.showLoader()
     this.setState({ person, films: [] }, () => {
       getPerson(this.state.person)
@@ -77,7 +76,6 @@ class App extends Component {
   }
 
   pickFilm = currentFilm => {
-    console.log("pickFilm", currentFilm);
     this.setState({ currentFilm })
     this.toggleModal()
   }
@@ -91,18 +89,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo2} alt="Movie Poster" width="150px"/>
+            <div className="App-header-center">
+              <PersonPicker handleChange={this.handleChange}/>
+            </div>
+            <div className="App-header-right">
+              <ViewGridIcon onClick={this.toggleRow} className={gridClass}/>
+              <FormatListBulletedIcon onClick={this.toggleRow} className={rowClass}/>
+            </div>
         </header>
-
-        <div className="subheader">
-          <div className="subheader-left">
-            <PersonPicker handleChange={this.handleChange}/>
-          </div>
-          <div className="subheader-right">
-            <ViewGridIcon onClick={this.toggleRow} className={gridClass}/>
-            <FormatListBulletedIcon onClick={this.toggleRow} className={rowClass}/>
-          </div>
-        </div>
-
 
         {this.state.loading &&
           <div className="movies">
