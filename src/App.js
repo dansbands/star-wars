@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/App.css';
 import PersonPicker from './components/PersonPicker'
 import FilmCard from './components/FilmCard'
+import FilmModal from './components/FilmModal'
 import { getPerson, getFilm } from './utils/index.js'
 import ViewGridIcon from 'mdi-react/ViewGridIcon';
 import FormatListBulletedIcon from 'mdi-react/FormatListBulletedIcon';
@@ -18,8 +19,10 @@ class App extends Component {
     },
     data: [],
     films: [],
+    currentFilm: {},
     loading: false,
-    row: false
+    row: false,
+    modal: false
   }
 
   handleChange = person => {
@@ -52,7 +55,8 @@ class App extends Component {
     this.state.films.length ?
     this.state.films.map(f => {
       return <FilmCard
-        film= {f}
+        onClick={() => this.pickFilm(f)}
+        film={f}
         row={this.state.row}
         key={f.episode_id}/>
     }) : "No films listed"
@@ -66,6 +70,16 @@ class App extends Component {
 
   toggleRow = () => {
     this.setState({ row: !this.state.row})
+  }
+
+  toggleModal = () => {
+    this.setState({ modal: !this.state.modal })
+  }
+
+  pickFilm = currentFilm => {
+    console.log("pickFilm", currentFilm);
+    this.setState({ currentFilm })
+    this.toggleModal()
   }
 
   render() {
@@ -107,6 +121,11 @@ class App extends Component {
 
         {this.state.person.name && !this.state.loading && !this.state.films.length &&
           'No films available'}
+
+        <FilmModal
+          modal={this.state.modal}
+          toggleModal={this.toggleModal}
+          data={this.state.currentFilm}/>
       </div>
     );
   }

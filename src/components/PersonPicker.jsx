@@ -41,7 +41,7 @@ class PersonPicker extends React.Component {
         defaultValue="Choose a character"
         >
 
-        <option value="Choose a character" disabled>Select your option</option>
+        <option value="Choose a character" disabled>Choose a Character...</option>
           {this.renderDropdownItems()}
 
       </select>

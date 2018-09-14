@@ -34,14 +34,14 @@ class FilmCard extends React.Component {
   }
 
   render () {
+    // console.log("FilmCard Props", this.props);
     let rowClass = this.props.row ? "movie-row" : "movie-card"
     let rowImage = this.props.row ? "image-row" : "image-card"
-    console.log("FilmCard Props", this.props);
     let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let numeral = roman[this.props.film.episode_id - 1]
     let source = `/img/posters/${this.props.film.episode_id}.jpg`
     return (
-      <div key={this.props.film.title} className={rowClass}>
+      <div key={this.props.film.title} className={rowClass} onClick={this.props.onClick}>
         {this.props.row ? (
           <Row className="movie-row-content align-middle">
             <Col md={2}>
