@@ -30,8 +30,7 @@ class FilmModal extends React.Component {
             {data.opening_crawl}
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.props.toggleModal}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={this.props.toggleModal}>Cancel</Button>
+            <Button color="primary" onClick={this.props.toggleModal}>Close</Button>{' '}
           </ModalFooter>
         </Modal>
       </div>
