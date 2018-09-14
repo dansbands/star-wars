@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row } from 'reactstrap';
 
 class FilmModal extends React.Component {
   formatDate = (date) => {
@@ -36,6 +36,7 @@ class FilmModal extends React.Component {
     let { data } = this.props
     let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let numeral = roman[data.episode_id - 1]
+    let source = `/img/posters/${data.episode_id}.jpg`
     console.log("FilmModal Props", this.props);
 
     return (
@@ -50,7 +51,14 @@ class FilmModal extends React.Component {
             }
           </ModalHeader>
           <ModalBody>
-            {data.opening_crawl}
+            <Row>
+              <Col md={4}>
+                <img src={source} alt="poster" className="image-card"/>
+              </Col>
+              <Col md={8}>
+                {data.opening_crawl}
+              </Col>
+            </Row>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.props.toggleModal}>Close</Button>{' '}
