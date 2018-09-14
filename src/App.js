@@ -106,7 +106,7 @@ class App extends Component {
 
         {this.state.loading &&
           <div className="movies">
-            <img src={loader} width="100px" alt="loading" className="loader" />
+            <img src={loader} width="200px" alt="loading" className="loader" />
           </div>
         }
 
