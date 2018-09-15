@@ -41,11 +41,23 @@ class App extends Component {
       films.map(f => {
         getFilm(f)
         .then(data => newFilms.push(data))
-        .then(films => this.setState({ films: newFilms }))
+        .then(films => this.setState({ films: this.sortFilms(newFilms) }))
       })
     } else {
       this.setState({ films: [] })
     }
+  }
+
+  sortFilms = films => {
+    films = films.sort((a,b) => {
+      console.log('sort a', a.release_date);
+      console.log('sort b', b.release_date);
+      if(a.release_date < b.release_date) return -1;
+      if(a.release_date > b.release_date) return 1;
+      return 0;
+    })
+    return films
+    // console.log('sorted films', films);
   }
 
   renderFilms = () => {
@@ -57,7 +69,8 @@ class App extends Component {
         film={f}
         row={this.state.row}
         key={f.episode_id}/>
-    }) : "No films listed"
+    })
+    : "No films listed"
     return newFilms
   }
 
