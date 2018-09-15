@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-   "npm": "6.1.0",
-   "node": "10.4.1"
+    "npm": "6.1.0",
+    "node": "10.4.1"
   },
   "dependencies": {
     "@mdi/font": "^2.7.94",
