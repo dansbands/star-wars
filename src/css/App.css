@@ -52,8 +52,11 @@
 }
 
 .subheader-caption {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  /* margin-top: 20px;
+  margin-bottom: 10px; */
+  margin: 20px 40px 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
 }
 
 .active {
