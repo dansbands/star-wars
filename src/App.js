@@ -57,7 +57,7 @@ class App extends Component {
       return 0;
     })
     return films
-    // console.log('sorted films', films);
+    console.log('sorted films', films);
   }
 
   renderFilms = () => {
