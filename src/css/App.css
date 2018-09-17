@@ -71,6 +71,7 @@
 
 .loader {
   align-self: center;
+  margin-left: 40%;
 }
 
 .movie-card {
@@ -122,7 +123,7 @@
 }
 
 .movies {
-  margin: 0 8%; 
+  margin: 0 8%;
   display: flex;
   /* justify-content: space-around; */
   flex-wrap: wrap;
