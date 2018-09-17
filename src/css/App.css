@@ -50,22 +50,6 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-/*
-.subheader {
-  display: flex;
-  justify-content: space-around;
-}
-
-.subheader-left {
-  width: 50%;
-}
-
-.subheader-right {
-  display: flex;
-  justify-content: center;
-  width: 20%;
-  padding-top: 10px;
-} */
 
 .subheader-caption {
   margin-top: 20px;
@@ -138,8 +122,9 @@
 }
 
 .movies {
+  margin: 0 8%; 
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   flex-wrap: wrap;
   min-height: 80vh;
 }
