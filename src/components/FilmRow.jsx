@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 class FilmCard extends React.Component {
   formatDate = (date) => {
@@ -33,7 +32,7 @@ class FilmCard extends React.Component {
   }
 
   render () {
-    console.log("FilmCard Props", this.props);
+    // console.log("FilmCard Props", this.props);
     let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let numeral = roman[this.props.film.episode_id - 1]
     let source = `/img/posters/${this.props.film.episode_id}.jpg`

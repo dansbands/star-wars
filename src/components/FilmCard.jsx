@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Col, Row } from 'reactstrap'
 
 class FilmCard extends React.Component {

@@ -7,7 +7,6 @@ import { getPerson, getFilm } from './utils/index.js'
 import ViewGridIcon from 'mdi-react/ViewGridIcon';
 import FormatListBulletedIcon from 'mdi-react/FormatListBulletedIcon';
 import loader from './img/bb8.gif'
-import logo from './img/logo.jpg'
 import logo2 from './img/logo2.jpg'
 
 class App extends Component {
@@ -39,7 +38,7 @@ class App extends Component {
     let newFilms = []
     if (films) {
       films.map(f => {
-        getFilm(f)
+        return getFilm(f)
         .then(data => newFilms.push(data))
         .then(films => this.setState({ films: this.sortFilms(newFilms) }))
       })
@@ -50,14 +49,13 @@ class App extends Component {
 
   sortFilms = films => {
     films = films.sort((a,b) => {
-      console.log('sort a', a.release_date);
-      console.log('sort b', b.release_date);
+      // console.log('sort a', a.release_date);
+      // console.log('sort b', b.release_date);
       if(a.release_date < b.release_date) return -1;
       if(a.release_date > b.release_date) return 1;
       return 0;
     })
     return films
-    console.log('sorted films', films);
   }
 
   renderFilms = () => {
@@ -93,7 +91,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('state', this.state);
+    // console.log('state', this.state);
     let rowClass = this.state.row ? "active" : "inactive"
     let gridClass = this.state.row ? "inactive" : "active"
     return (

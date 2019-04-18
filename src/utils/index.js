@@ -1,12 +1,11 @@
-const baseURL = "https://swapi.co/api/"
 
 export const getPerson = (person) => {
-  console.log('gettingPerson', person);
+  // console.log('gettingPerson', person);
   return fetch(person.url, {
     method: 'GET',
   }).then(res => res.json())
   .catch((err) => {
-    console.log('error', err);
+    // console.log('error', err);
       // return findPerson(person)
    })
 }

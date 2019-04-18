@@ -37,7 +37,7 @@ class FilmModal extends React.Component {
     let roman = ["I", "II", "III", "IV", "V", "VI", "VII"]
     let numeral = roman[data.episode_id - 1]
     let source = `https://dansbands.github.io/star-wars/img/posters/${data.episode_id}.jpg`
-    console.log("FilmModal Props", this.props);
+    // console.log("FilmModal Props", this.props);
 
     return (
       <div>
