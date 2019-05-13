@@ -18,7 +18,7 @@ export const getFilm = (film) => {
 
 // The directions explicitly say to only use the endpoints in characters.json
 // If we wanted to fix this, and only had those endpoints available,
-// we could use the api's query endpoint, as shown below,
+// we could use the api's query endpoint, as shown in `findPerson()` below,
 // and call it in the error handling, as shown above on line 9, commented out.
 // This would alleviate any pain points for the user, who knows that Obi Wan appeared in Episodes I-VI
 
